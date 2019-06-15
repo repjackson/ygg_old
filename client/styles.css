@@ -178,7 +178,8 @@ input:focus, textarea:focus {
 
 
 .ui.header{
-  font-family: 'firstorder', sans-serif !important;
+  font-family: 'ubuntu', sans-serif !important;
+  /* font-size:200% !important; */
 }
 a {
   font-family: 'Ubuntu', sans-serif !important;
@@ -493,28 +494,29 @@ a {
 }
 
 .f10 {
-  font-size: 200%;
-  line-height: 120%;
-  margin-bottom: 10px; }
+  /* font-size: 200% !important; */
+  font-size: 5em !important;
+  line-height: 120% !important;
+  margin-bottom: 10px !important; }
 .f9 {
-  font-size: 180%;
-  line-height: 120%;
-  margin-bottom: 5px; }
+  font-size: 180% !important;
+  line-height: 120% !important;
+  margin-bottom: 5px !important; }
 .f8 {
-  font-size: 160%;
-  line-height: 160%; }
+  font-size: 160% !important;
+  line-height: 160% !important; }
 .f7 {
-  font-size: 140%;
-  line-height: 140%; }
+  font-size: 140% !important;
+  line-height: 140% !important; }
 .f6 {
-  font-size: 120%;
-  line-height: 120%; }
+  font-size: 120% !important;
+  line-height: 120% !important; }
 .f5 {
-  font-size: 110%;
-  line-height: 110%; }
+  font-size: 110% !important;
+  line-height: 110% !important; }
 .f4 {
-  font-size: 100%;
-  line-height: 100%; }
+  font-size: 100% !important;
+  line-height: 100% !important; }
 .f3 {
   font-size: 90%;
   line-height: 90%; }

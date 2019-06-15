@@ -1,41 +1,32 @@
 template(name='front')
     .ui.padded.stackable.grid
         .row
-            .sixteen.wide.column
-                h1.ui.massive.center.aligned.header 
-                    img.ui.inline.image(src="{{c.url 'igg'}}")
-                    span.firstorder IGGDRASIL
-        //- .two.column.row
-        //-     .column
-        //-         +healthclub_status
-        //-         +meal_widget
-        //-         +marketplace_widget
-        //-         //- .ui.header chat
-        //-         //- +model_scroller model='for_rent' header='For Rent' icon='business'
-        //-         //- +model_scroller model='event' header='Events' icon='calendar'
-        //-     .column
-        //-         +cal
-        //-         //- +model_scroller model='photo' header='Photos' icon='image'
-        //- .two.column.row    
-        //-     .column
-        //-         +model_scroller model='shop' header='marketplace' icon='shop'
-        //-     .column
-        //-         +model_scroller model='gr_post' header='posts' icon='post'
-        //- .one.column.row    
-        //-     .column
-        //-         iframe(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241.41414983186405!2d-105.2554393150354!3d40.00847065387155!2m3!1f357.8823529411765!2f37.27633198895564!3f0!3m2!1i1024!2i768!4f35!3m3!1m2!1s0x0%3A0x710555f334428f65!2sGold+Run+Health+Club!5e1!3m2!1sen!2sus!4v1559922280502!5m2!1sen!2sus" width="1200" height="450" frameborder="0" style="border:0" allowfullscreen)
-        //- .three.column.row    
-        //-     .column
-        //-         +model_scroller model='group' header='groups' icon='groups'
-        //-     .column
-        //-         +model_scroller model='company' header='businesses' icon='business'
-        //- .three.column.row    
-        //-     .column
-        //-         +model_scroller model='library' header='library' icon='library'
-        //-     .column
-        //-         +model_scroller model='ad' header='resident ads' icon='presentation'
-        //-     .column
-        //-         +model_scroller model='for_rent' header='for rent' icon='business'
+            .sixteen.wide.center.aligned.column
+                img.ui.small.inline.image(src="{{c.url 'igg'}}")
+                .inline.firstorder.f10(title='in the time before time, when nothing existed, there was only the tree yggdrasil & the void')
+                    |yggdrasil
+        .three.column.row    
+            .column
+                .firstorder.f9 alfheim
+            .column
+                .firstorder.f9 asgard
+            .column
+                .firstorder.f9 vanaheim
+        .three.column.row    
+            .column
+                .firstorder.f9 muspelheim
+            .column
+                .firstorder.f9 midgard
+            .column
+                .firstorder.f9 nifelheim
+        .three.column.row    
+            .column
+                .firstorder.f9 jutenheim
+            .column
+                .firstorder.f9 helheim
+            .column
+                .firstorder.f9 svartelfheim
+        img.ui.centered.rounded.image(src="https://www.ancient-code.com/wp-content/uploads/2014/10/10559961_545146758944245_4763288013922299078_n.jpg")
 
 
 
