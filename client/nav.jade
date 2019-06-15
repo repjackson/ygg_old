@@ -1,0 +1,173 @@
+template(name='nav')
+    unless is_frontdesk
+        //- .ui.borderless.attached.big.inverted.menu.topnav.grblue
+        .ui.borderless.attached.large.inverted.menu.topnav
+            //- a.toggle_sidebar.icon.item.sidebar_on
+            //-     i.large.sidebar.icon
+            if is_loading
+                .icon.item
+                    i.big.loading.dharmachakra.icon
+            else
+                if is_staff
+                    a.header.icon.item(href='/' class="{{isActivePath '/'}}")
+                        //- i.home.large.large.icon
+                        +i name='home-page' classes='ui mini inline image'
+                    a.icon.item(href='/home' class="{{isActivePath '/home'}}")
+                        //- i.th.large.large.icon
+                        +i name='activity-grid-2' classes='ui mini inline image'
+                    a.item(href='/buildings' class="{{isActivePath '/buildings'}}")
+                        //- i.th.large.large.icon
+                        +i name='apartment' classes='ui mini inline image'
+                        .mobile.hidden &nbsp; buildings
+                //- a.header.icon.set_units.item(href='/m/unit' class="{{isActivePath '/m/unit'}}")
+                //-     //- i.th.large.large.icon
+                //-     +i name='room'    
+                if is_staff
+                    a.item(href='/staff' class="{{isActivePath '/staff'}}" title='staff')
+                        +i name='employee-card' classes='ui mini inline image'
+                        //- i.shield.large.icon
+                        .mobile.hidden &nbsp; staff
+                    a.item(href='/users' class="{{isActivePath '/users'}}" title='users')
+                        //- i.users.large.icon
+                        +i name='groups' classes='ui mini inline image'
+                        .mobile.hidden &nbsp; users
+                if is_resident_or_user        
+                    //- a.item(href='/meals' class="{{isActivePath '/meals'}}" title='meals')
+                    //-     //- i.food.large.icon
+                    //-     +i name='food'
+                    //-     .mobile.hidden &nbsp; meals
+                    a.item.set_shop(href='/m/shop' class="{{isActivePath '/m/shop'}}" title='shop')
+                        //- i.food.large.icon
+                        +i name='shop'
+                        .mobile.hidden &nbsp; shop
+                    //- a.item.set_meal(href='/m/meal' class="{{isActivePath '/m/meal'}}" title='meals')
+                    //-     //- i.food.large.icon
+                    //-     +i name='food'
+                    //-     .mobile.hidden &nbsp; meals
+                //- if is_admin
+                //-     a.icon.item(href='/alpha' class="{{isActivePath '/alpha'}}")
+                //-         +i name='alpha'
+                        //- i.campground.large.icon
+                        //- .mobile.hidden Alpha
+                    //- a.icon.item(href='/omega' class="{{isActivePath '/omega'}}")
+                    //-     +i name='omega'
+                        //- .mobile.hidden Omega
+                    
+                //- a.item.set_marketplace(href='/m/marketplace' class="{{isActivePath '/m/marketplace'}}")
+                //-     +i name='shop'
+                if is_staff
+                    a.item(href='/healthclub' class="{{isActivePath '/healthclub'}}" title='health club')
+                        +i name='treadmill' classes='ui mini inline image'
+                        //- i.clinic.medical.large.icon
+                        .mobile.hidden &nbsp; kiosk
+            .right.menu
+                //- if is_admin
+                //-     a.icon.item.set_task(href='/m/task' class="{{isActivePath '/m/task'}}")
+                //-         +i name='tasks'
+                //-         //- i.tasks.large.icon
+                //-     a.icon.item.set_note(href='/m/note' class="{{isActivePath '/m/note'}}")
+                //-         +i name='note'
+                //-         //- i.rss.large.icon
+                if currentUser
+                    //- .item
+                    //-     .ui.header(title='your karma') #{currentUser.karma}
+                    unless logging_out
+                        //- .ui.simple.dropdown.item(href="/user/#{currentUser.username}/notifications" class="{{isActivePath '/messages'}}")
+                        //-     i.alarm.icon
+                        //-     .menu
+                        //-         each notifications
+                        //-             .ui.button #{text}
+                        if is_user
+                            //- a.icon.item(href="/user/#{currentUser.username}" class="{{isActiveRoute regex='profile'}}")
+                            //-     //- +i name='new-post'
+                            //-     i.big.mail.icon(class=mail_icon_class title="#{unread_count} Unread")
+                            a.icon.item(href="/my_transactions" class="{{isActivePath '/my_transactions'}}" title='my transactions')
+                                +i name='cashbook'
+                            a.icon.item(href="/chat" class="{{isActivePath '/chat'}}" title='chat')
+                                +i name='chat'
+                            a.icon.item(href="/karma" class="{{isActivePath '/karma'}}" title='karma')
+                                +i name='wallet'
+                                |#{currentUser.karma}
+                            a.icon.item(href="/cart" class="{{isActivePath '/cart'}}" title='cart')
+                                +i name='shopping-cart'
+                                |#{cart_amount}
+                                //- i.chat.large.icon
+                            //- if is_user
+                            //-     a.icon.item(href="/events" class="{{isActivePath '/events'}}")
+                            //-         +i name='calendar'
+                            //-     a.icon.item(href="/groups" class="{{isActivePath '/groups'}}")
+                            //-         +i name='group'
+                            //-     //- i.chat.large.icon
+                        //- if is_admin
+                        //-     a.icon.item(href='/admin' class="{{isActivePath '/admin'}}")
+                        //-         +i name='user shield'
+                        if is_dev
+                            a.item.set_model(href='/m/model' class="{{isActivePath '/m/model'}}")
+                                +i name='active directory'
+                                //- i.sitemap.large.icon
+                        unless is_frontdesk
+                            a.item(href="/user/#{currentUser.username}" class="{{isActiveRoute regex='user_chat'}}")
+                                if currentUser.image_id
+                                    img.ui.avatar.image(src="{{c.url currentUser.image_id width=100 height=100 gravity='face' crop='fill'}}")
+                                else
+                                    //- +i name='user'
+                                    i.user.large.icon
+                                //- | #{currentUser.username}
+                    if logging_out
+                        .item
+                            i.large.loading.circle.notch.icon
+                    else
+                        a#logout.ui.mobile.hidden.icon.item(href='#' title='Log Out')
+                            i.sign.out.large.icon
+                else
+                    a.item(href='/login' title='Login') 
+                        +i name='enter-2' classes='ui mini inline image'
+                        |login
+        if currentUser.show_bookmarked_model_bar
+            .ui.inverted.attached.borderless.menu.topnav.grblue
+                each bookmarked_models
+                    a.item.set_bookmarked_model(href="/m/#{slug}" class="{{isActivePath '/m/#{slug}'}}")
+                        //- i.large.icon(class=icon)
+                        +i name=icon classes='ui avatar image'
+                        |#{title}
+
+
+
+template(name='footer')
+    .ui.fluid.basic.attached.segment.footer
+        .ui.container.stackable.grid
+            .eight.wide.column
+                //- +health_club_info
+                //- if is_user
+                //-     +ads
+                //-     form(action='https://www.paypal.com/cgi-bin/webscr', method='post', target='_top')
+                //-         input(type='hidden', name='cmd', value='_s-xclick')
+                //-         input(type='hidden', name='hosted_button_id', value='AUVHGYNUW5LVE')
+                //-         <input type="hidden" name="hosted_button_id" value="7SENHECABERS6" />
+                //-         // input(type='image', src='https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif', border='0', name='submit')
+                //-         //- <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+                //-         img(alt='', border='0', src='https://www.paypal.com/en_US/i/scr/pixel.gif', width='1', height='1')
+                //-         button.ui.large.icon.button(type='submit')
+                //-             //- i.pied.piper.alternate.large.icon
+                //-             |donate
+                
+                //- +health_club_info
+                if is_dev    
+                    with current_user
+                        +role_switcher
+            .eight.wide.column
+                //- unless currentUser
+                //-     a.ui.big.basic.button(href='/login')
+                //-         i.sign.in.icon
+                //-         |login
+                if is_eric
+                    with currentUser
+                        +role_switcher
+                else if is_dev
+                    with currentUser
+                        +role_switcher
+        //- if is_user
+        //-     .row
+        //-         .ui.center.aligned.inverted.header
+        //-             i.copyright.outline.icon
+        //-             |

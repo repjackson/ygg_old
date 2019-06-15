@@ -1,0 +1,72 @@
+template(name='unit')
+    .ui.stackable.padded.grid
+        .four.wide.column
+            a.ui.big.button(href="/building/#{unit.building_code}")
+                i.yellow.left.chevron.icon
+                |#{unit.building_code}
+            .ui.header 
+                +i name='apartment'
+                |unit
+                |#{unit.unit_number}
+            .ui.header 
+                |building #{unit.building_number}
+            if is_dev
+                with unit
+                    +number_edit key='building_number' direct=true
+            .ui.header 
+                |building #{unit.building_code}
+            if is_dev
+                with unit
+                    +text_edit key='building_code' direct=true
+        .twelve.wide.column
+            +unit_residents
+            +unit_owners
+            +unit_permits
+            
+template(name='unit_permits')            
+    .ui.segment
+        .ui.header 
+            +i name='badge'
+            |unit permits
+        .ui.cards
+            each permits
+                .ui.card
+                    .content
+                        with resident 
+                            +username_info
+                        +date_view key='expiration_date' icon='calendar delete' direct=true
+                        +text_view key='permit' icon='badge' direct=true
+                        +text_view key='license_plate' icon='driver-license-card' direct=true
+
+template(name='unit_owners')            
+    .ui.segment
+        .ui.header 
+            +i name='rent'
+            |unit owners
+        .ui.cards
+            each owners
+                .ui.card
+                    .image
+                        img.ui.image(src="{{c.url image_id width=300 height=300 gravity='face' crop='fill'}}")
+                    .content
+                        a.header(href="/user/#{username}")
+                             |#{first_name} #{last_name} 
+                            .meta @#{username}
+                            //- +array_view key='tags' label='Tags' direct=true
+
+
+template(name='unit_residents')            
+    .ui.segment
+        .ui.header
+            +i name='group'
+            |unit residents
+        .ui.cards
+            each residents
+                .ui.card
+                    .image
+                        img.ui.image(src="{{c.url image_id width=300 height=300 gravity='face' crop='fill'}}")
+                    .content
+                        a.header(href="/user/#{username}")
+                             |#{first_name} #{last_name} 
+                            .meta @#{username}
+                            //- +array_view key='tags' label='Tags' direct=true

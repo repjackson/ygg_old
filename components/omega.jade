@@ -1,0 +1,27 @@
+template(name='omega')
+    +i name='omega' classes='ui inline image'
+    .ui.big.icon.input
+        i.search.icon
+        input.omega_in(type='text')
+    each sessions
+        .ui.button.select_omega(class=session_button_class)
+            |#{name}
+    with current_omega
+        +text_edit key='name' label='Name' direct=true
+        +text_edit key='query' label='Query' direct=true
+        +remove_button
+        .ui.header result
+
+
+
+template(name='omega_doc_edit')
+    .ui.hidden.divider
+    .ui.container
+        with current_doc
+            .ui.header omega doc edit
+            +text_edit key='model' direct=true
+            .ui.divider
+            //- +text_edit key='title' direct=true
+            +text_edit key='slug' direct=true
+            .ui.divider
+            +array_edit key='child_models' direct=true
