@@ -121,7 +121,7 @@ if Meteor.isClient
             if Session.equals 'loading', true
                  'disabled'
             else if facet.filters.length > 0 and @name in facet.filters
-                'teal'
+                'large'
             else 'basic'
 
     Template.alpha_result.onRendered ->

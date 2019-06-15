@@ -14,9 +14,13 @@ template(name='nav')
                     a.icon.item(href='/home' class="{{isActivePath '/home'}}")
                         //- i.th.large.large.icon
                         +i name='activity-grid-2' classes='ui mini inline image'
-                //- a.header.icon.set_units.item(href='/m/unit' class="{{isActivePath '/m/unit'}}")
-                //-     //- i.th.large.large.icon
-                //-     +i name='room'    
+                a.item(href='/alpha' class="{{isActivePath '/alpha'}}")
+                    +i name='alpha'    
+                a.item(href='/omega' class="{{isActivePath '/omega'}}")
+                    +i name='omega'    
+                a.item.set_model(href='/m/model' class="{{isActivePath '/m/model'}}")
+                    +i name='active-directory'
+
                 if is_admin
                     a.item(href='/users' class="{{isActivePath '/users'}}" title='users')
                         //- i.users.large.icon
@@ -71,10 +75,6 @@ template(name='nav')
                         //- if is_admin
                         //-     a.icon.item(href='/admin' class="{{isActivePath '/admin'}}")
                         //-         +i name='user shield'
-                        if is_dev
-                            a.item.set_model(href='/m/model' class="{{isActivePath '/m/model'}}")
-                                +i name='active directory'
-                                //- i.sitemap.large.icon
                         unless is_frontdesk
                             a.item(href="/user/#{currentUser.username}" class="{{isActiveRoute regex='user_chat'}}")
                                 if currentUser.image_id

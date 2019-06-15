@@ -137,7 +137,7 @@ Router.route '/login', -> @render 'login'
 Router.route '/home', -> @render 'home'
 Router.route '/', (->
     @layout 'layout'
-    @render 'front'
+    @render 'alpha'
     ), name:'front'
 
 
