@@ -3,7 +3,7 @@ body {
     font-size: 110% !important;
     /*line-height: 200% !important;*/
     /*background: #3d3d3d !important;*/
-    background: rgba(0, 0, 0, .02) !important
+    background: rgba(0, 0, 0, .1) !important
     /* background: #0e0e44 !important; */
 }
 
@@ -178,7 +178,7 @@ input:focus, textarea:focus {
 
 
 .ui.header{
-  font-family: 'Ubuntu', sans-serif !important;
+  font-family: 'firstorder', sans-serif !important;
 }
 a {
   font-family: 'Ubuntu', sans-serif !important;
@@ -188,7 +188,22 @@ a {
 }
 .bat_white {
   font-family: 'bat_white', sans-serif !important;
-} */
+}
+.firstorder {
+  font-family: 'firstorder', sans-serif !important;
+}
+.younger_runes {
+  font-family: 'younger_runes', sans-serif !important;
+}
+.younger_runes_bold {
+  font-family: 'younger_runes_bold', sans-serif !important;
+}
+.middle_runes {
+  font-family: 'middle_runes', sans-serif !important;
+}
+.middle_runes_bold {
+  font-family: 'middle_runes_bold', sans-serif !important;
+}
 /* .card a.header {
   color: #482d1b !important;
 } */
@@ -324,12 +339,24 @@ a {
   padding: 10px;
 }
 @font-face {
-  font-family: imogen;
-  src: url("/fonts/ImogenAgnes.ttf");
+  font-family: younger_runes;
+  src: url("/younger_runes.ttf");
 }
 @font-face {
-  font-family: imogen_swash;
-  src: url("/fonts/ImogenAgnesSwash.ttf");
+  font-family: firstorder;
+  src: url("/firstorder.ttf");
+}
+@font-face {
+  font-family: younger_runes_bold;
+  src: url("/younger_runes_bold.ttf");
+}
+@font-face {
+  font-family: middle_runes;
+  src: url("/middle_runes.ttf");
+}
+@font-face {
+  font-family: middle_runes_bold;
+  src: url("/middle_runes_bold.ttf");
 }
 @font-face {
   font-family: bat_white;

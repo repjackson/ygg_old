@@ -6,60 +6,30 @@ template(name='nav')
             //-     i.large.sidebar.icon
             if is_loading
                 .icon.item
-                    i.big.loading.dharmachakra.icon
+                    i.big.loading.yin.yang.icon
             else
-                if is_staff
+                if is_admin
                     a.header.icon.item(href='/' class="{{isActivePath '/'}}")
-                        //- i.home.large.large.icon
-                        +i name='home-page' classes='ui mini inline image'
+                        img.ui.avatar.image(src="{{c.url 'igg' width=100 height=100 gravity='face' crop='fill'}}")
                     a.icon.item(href='/home' class="{{isActivePath '/home'}}")
                         //- i.th.large.large.icon
                         +i name='activity-grid-2' classes='ui mini inline image'
-                    a.item(href='/buildings' class="{{isActivePath '/buildings'}}")
-                        //- i.th.large.large.icon
-                        +i name='apartment' classes='ui mini inline image'
-                        .mobile.hidden &nbsp; buildings
                 //- a.header.icon.set_units.item(href='/m/unit' class="{{isActivePath '/m/unit'}}")
                 //-     //- i.th.large.large.icon
                 //-     +i name='room'    
-                if is_staff
-                    a.item(href='/staff' class="{{isActivePath '/staff'}}" title='staff')
-                        +i name='employee-card' classes='ui mini inline image'
-                        //- i.shield.large.icon
-                        .mobile.hidden &nbsp; staff
+                if is_admin
                     a.item(href='/users' class="{{isActivePath '/users'}}" title='users')
                         //- i.users.large.icon
                         +i name='groups' classes='ui mini inline image'
                         .mobile.hidden &nbsp; users
-                if is_resident_or_user        
-                    //- a.item(href='/meals' class="{{isActivePath '/meals'}}" title='meals')
-                    //-     //- i.food.large.icon
-                    //-     +i name='food'
-                    //-     .mobile.hidden &nbsp; meals
-                    a.item.set_shop(href='/m/shop' class="{{isActivePath '/m/shop'}}" title='shop')
-                        //- i.food.large.icon
-                        +i name='shop'
-                        .mobile.hidden &nbsp; shop
-                    //- a.item.set_meal(href='/m/meal' class="{{isActivePath '/m/meal'}}" title='meals')
-                    //-     //- i.food.large.icon
-                    //-     +i name='food'
-                    //-     .mobile.hidden &nbsp; meals
-                //- if is_admin
-                //-     a.icon.item(href='/alpha' class="{{isActivePath '/alpha'}}")
-                //-         +i name='alpha'
-                        //- i.campground.large.icon
-                        //- .mobile.hidden Alpha
-                    //- a.icon.item(href='/omega' class="{{isActivePath '/omega'}}")
-                    //-     +i name='omega'
-                        //- .mobile.hidden Omega
-                    
-                //- a.item.set_marketplace(href='/m/marketplace' class="{{isActivePath '/m/marketplace'}}")
-                //-     +i name='shop'
-                if is_staff
-                    a.item(href='/healthclub' class="{{isActivePath '/healthclub'}}" title='health club')
-                        +i name='treadmill' classes='ui mini inline image'
-                        //- i.clinic.medical.large.icon
-                        .mobile.hidden &nbsp; kiosk
+                //-     a.item(href='/staff' class="{{isActivePath '/staff'}}" title='staff')
+                //-         +i name='employee-card' classes='ui mini inline image'
+                //-         //- i.shield.large.icon
+                //-         .mobile.hidden &nbsp; staff
+                a.item.set_shop(href='/m/shop' class="{{isActivePath '/m/shop'}}" title='shop')
+                    //- i.food.large.icon
+                    +i name='shop'
+                    .mobile.hidden &nbsp; shop
             .right.menu
                 //- if is_admin
                 //-     a.icon.item.set_task(href='/m/task' class="{{isActivePath '/m/task'}}")
